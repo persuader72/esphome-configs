@@ -1,0 +1,20 @@
+---
+substitutions:
+  switch_name: Switch
+  binary_sensor_name: Button
+
+packages:
+  common: !include ../common-esp8266.yaml
+  meshmesh: !include ../common/meshmesh.yaml
+
+switch:
+  - platform: gpio
+    id: switch_1
+    name: ${switch_name}
+    pin: GPIO4
+
+binary_sensor:
+  - platform: gpio
+    id: binary_sensor_1
+    name: ${binary_sensor_name}
+    pin: GPIO5                    

@@ -1,0 +1,51 @@
+---
+substitutions:
+  cover_name: Cover
+  binary_sensor_name: Button
+  open_duration: 1min
+  close_duration: 1min
+
+packages:
+  common: !include ../common-esp8266.yaml
+  meshmesh: !include ../common/meshmesh.yaml
+
+switch:
+  - platform: gpio
+    pin: GPIO4
+    id: switch_1
+    internal: True
+    restore_mode: ALWAYS_OFF
+
+cover:
+  - platform: time_based
+    device_class: garage
+    id: cover_1
+    name: ${cover_name}
+    open_action:
+      - switch.turn_on: switch_1
+      - delay: 0.5s
+      - switch.turn_off: switch_1
+    open_duration: ${open_duration}
+    close_action:
+      - switch.turn_on: switch_1
+      - delay: 0.5s
+      - switch.turn_off: switch_1
+    close_duration: ${close_duration}
+    stop_action:
+      - switch.turn_on: switch_1
+      - delay: 0.5s
+      - switch.turn_off: switch_1
+    has_built_in_endstop: True
+    manual_control: True
+    assumed_state: True
+
+binary_sensor:
+  - platform: gpio                     
+    pin:                               
+      number: GPIO5                    
+    name: ${binary_sensor_name}             
+    id: button_1
+    on_press:
+      then:
+        - cover.toggle: cover_1
+             
