@@ -118,8 +118,13 @@ sensor:
       - multiply: 8
   - platform: shelly_dallas
     index: 0
-#    address: 0xCA011938282E5128
-    name: "Exterank Temperature"
+    name: "External Temperature1"
+    unit_of_measurement: "°C"
+    accuracy_decimals: 1
+    icon: "mdi:thermometer"
+  - platform: shelly_dallas
+    index: 1
+    name: "External Temperature2"
     unit_of_measurement: "°C"
     accuracy_decimals: 1
     icon: "mdi:thermometer"
