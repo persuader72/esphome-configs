@@ -1,0 +1,18 @@
+text_sensor:
+  - platform: homeassistant
+    id: garage_cover1_sns
+    entity_id: cover.shelly1v3_05_shelly_1v3_05_cover
+    on_value:
+      - then:
+        - lvgl.label.update:
+            id: garage_cover1_stop_lbl
+            text: !lambda return x;
+
+  - platform: homeassistant
+    id: garage_cover2_sns
+    entity_id: cover.shelly1v3_06_shelly_1v3_06_cover
+    on_value:
+      - then:
+        - lvgl.label.update:
+            id: garage_cover2_stop_lbl
+            text: !lambda return x;

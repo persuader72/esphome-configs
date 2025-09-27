@@ -1,0 +1,26 @@
+binary_sensor:
+  - platform: gpio
+    id: charging
+    name: "Charging Status"
+    pin:
+      pi4ioe5v6408: pi4ioe2
+      number: 6
+      mode: INPUT_PULLDOWN
+
+  - platform: gpio
+    id: headphone_detect
+    name: "Headphone Detect"
+    pin:
+      pi4ioe5v6408: pi4ioe1
+      number: 7
+
+  - platform: homeassistant
+    id: carico_solare_sns
+    entity_id: switch.shelly1v3_02_shelly_1v3_02_relay
+    trigger_on_initial_state: true
+    on_state:
+      then:
+        lvgl.widget.update:
+          id: carico_solare_btn
+          state:
+            checked: !lambda return x;

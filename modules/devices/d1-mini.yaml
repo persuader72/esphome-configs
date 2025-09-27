@@ -1,0 +1,16 @@
+---
+substitutions:
+  switch_name: Blue LED
+  binary_sensor_name: Button
+
+packages:
+  common: !include ../common-esp8266.yaml
+  meshmesh: !include ../common/meshmesh.yaml
+
+switch:
+  - platform: gpio
+    id: switch_1
+    name: ${switch_name}
+    pin: GPIO4
+
+

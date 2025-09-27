@@ -1,0 +1,162 @@
+lvgl:
+  disp_bg_color: 0x000000
+  default_font: montserrat_28
+  widgets:
+
+# ------------------------------------------------------------------------------------------------
+# Carico Solare: Accesso/Spegnimento uscita inverter
+# ------------------------------------------------------------------------------------------------
+
+    - button:
+        id: carico_solare_btn
+        x: 20
+        y: 15
+        width: 400
+        height: 100
+        checkable: true
+        widgets:
+          - label:
+              align: CENTER
+              text: 'Inverter Out.'
+        on_change:
+          then:
+            - if:
+                condition:
+                  lambda: return x;
+                then:
+                  - homeassistant.action:
+                      action: switch.turn_on
+                      data:
+                        entity_id: switch.shelly1v3_02_shelly_1v3_02_relay
+                else:
+                  - homeassistant.action:
+                      action: switch.turn_off
+                      data:
+                        entity_id: switch.shelly1v3_02_shelly_1v3_02_relay
+
+# ------------------------------------------------------------------------------------------------
+# Garage Cover 1: Serranda esterna del garage
+# ------------------------------------------------------------------------------------------------
+
+    - label:
+        id: garage_cover1_lbl
+        x: 20
+        y: 130
+        width: 150
+        text: 'Garage Cover 1'
+        text_align: CENTER
+
+    - button:
+        id: garage_cover1_open_btn
+        x: 20
+        y: 190
+        width: 150
+        height: 150
+        widgets:
+          - label:
+              id: garage_cover1_open_lbl
+              align: CENTER
+              text: "\uf077"
+        on_press:
+          - homeassistant.action:
+              action: cover.open_cover
+              data:
+                entity_id: cover.shelly1v3_05_shelly_1v3_05_cover
+
+    - button:
+        id: garage_cover1_stop_btn
+        x: 20
+        y: 355
+        width: 150
+        height: 150
+        widgets:
+          - label:
+              id: garage_cover1_stop_lbl
+              align: CENTER
+              text: "STOP"
+        on_press:
+          - homeassistant.action:
+              action: cover.stop_cover
+              data:
+                entity_id: cover.shelly1v3_05_shelly_1v3_05_cover
+
+    - button:
+        id: garage_cover1_close_btn
+        x: 20
+        y: 525
+        width: 150
+        height: 150
+        widgets:
+          - label:
+              id: garage_cover1_close_lbl
+              align: CENTER
+              text: "\uf078"
+        on_press:
+          - homeassistant.action:
+              action: cover.close_cover
+              data:
+                entity_id: cover.shelly1v3_05_shelly_1v3_05_cover
+
+# ------------------------------------------------------------------------------------------------
+# Garage Cover 2: Seconda serranda del garage
+# ------------------------------------------------------------------------------------------------
+
+    - label:
+        id: garage_cover2_lbl
+        x: 270
+        y: 130
+        width: 150
+        text: 'Garage Cover 2'
+        text_align: CENTER
+
+    - button:
+        id: garage_cover2_open_btn
+        x: 270
+        y: 190
+        width: 150
+        height: 150
+        widgets:
+          - label:
+              id: garage_cover2_open_lbl
+              align: CENTER
+              text: "\uf077"
+        on_press:
+          - homeassistant.action:
+              action: cover.open_cover
+              data:
+                entity_id: cover.shelly1v3_06_shelly_1v3_06_cover
+
+    - button:
+        id: garage_cover2_stop_btn
+        x: 270
+        y: 355
+        width: 150
+        height: 150
+        widgets:
+          - label:
+              id: garage_cover2_stop_lbl
+              align: CENTER
+              text: "STOP"
+        on_press:
+          - homeassistant.action:
+              action: cover.stop_cover
+              data:
+                entity_id: cover.shelly1v3_06_shelly_1v3_06_cover
+
+    - button:
+        id: garage_cover2_close_btn
+        x: 270
+        y: 525
+        width: 150
+        height: 150
+        widgets:
+          - label:
+              id: garage_cover2_close_lbl
+              align: CENTER
+              text: "\uf078"
+        on_press:
+          - homeassistant.action:
+              action: cover.close_cover
+              data:
+                entity_id: cover.shelly1v3_06_shelly_1v3_06_cover
+
