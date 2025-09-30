@@ -1,6 +1,8 @@
 ---
 substitutions:
   api_reboot_timeout: 15min
+  logger_baud_rate: 115200
+  logger_level: INFO
 
 esphome:
   name: ${name}
@@ -18,6 +20,8 @@ api:
   #  key: !secret api_encryption_key
 
 logger:
+  level: ${logger_level}
+  baud_rate: ${logger_baud_rate}
 
 time:
   - platform: homeassistant

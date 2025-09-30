@@ -1,22 +1,13 @@
+---
+substitutions:
+  switch_name: Switch
+  binary_sensor_name: Button
+
 external_components:
-  - source: github://EspMeshMesh/esphome-meshmesh@main
-    components: [meshmesh, meshmesh_direct, network, socket, esphome]
 #  - source: github://persuader72/esphome-components@master
 #    components: [ shelly_dallas ]
   - source: /home/stefano/Sviluppo/Stefano/esphome-components/components
     components: [ shelly ]
-
-substitutions:
-  device_name: "Shelly Plus 1"
-  # Higher value gives lower watt readout
-  current_res: "0.001"
-  # Lower value gives lower voltage readout
-  voltage_div: "1925"
-
-esphome:
-  name: shelly-plus-1
-  platformio_options:
-    board_build.f_cpu: 160000000L
 
 esp32:
   board: esp32doit-devkit-v1
@@ -27,43 +18,15 @@ esp32:
       CONFIG_ESP32_DEFAULT_CPU_FREQ_160: y
       CONFIG_ESP32_DEFAULT_CPU_FREQ_MHZ: "160"
 
-meshmesh:
-  baud_rate: 0
-  rx_buffer_size: 0
-  tx_buffer_size: 0
-  password: !secret meshmesh_password
-  channel: 3
-
-socket:
-  implementation: meshmesh_esp8266
-
-logger:
-  level: INFO
-  baud_rate: 0
-
-api:
-  reboot_timeout: 0s
-
-ota:
-  platform: esphome
-
-mdns:
-  disabled: True
-
-output:
-  - platform: gpio
-    id: "relay_output"
-    pin: GPIO26
+packages:
+  base: !include common-base.yaml
+  meshmesh: !include ../common/meshmesh.yaml
 
 switch:
-  - platform: output
-    id: "relay"
-    name: "${device_name} Relay"
-    output: "relay_output"
-
-#shelly_dallas:
-#  pin_a: GPIO1
-#  pin_b: GPIO0
+  - platform: gpio
+    id: switch_1
+    name: ${switch_name}
+    pin: GPIO26
 
 binary_sensor:
   - platform: gpio
@@ -87,11 +50,6 @@ binary_sensor:
         - switch.toggle: "relay"
     filters:
       - delayed_on_off: 5ms
-
-one_wire:
-  - platform: shelly
-    input: GPIO1
-    output: GPIO0
 
 sensor:
   - platform: ntc
@@ -146,4 +104,4 @@ sensor:
 #      name: "Living Room Temperature"
 #    humidity:
 #      name: "Living Room Humidity"
-#    update_interval: 60s
+#    update_interval: 60s 
