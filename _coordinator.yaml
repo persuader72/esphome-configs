@@ -6,11 +6,7 @@ substitutions:
   baud_rate: 460800
   rx_buffer_size: 2048
   tx_buffer_size: 4096
-  meshmesh_channel: 6
+  logger_baud_rate: 0
 
 packages:
   common: !include modules/devices/d1-mini.yaml
-
-logger:
-  level: INFO
-  baud_rate: 0

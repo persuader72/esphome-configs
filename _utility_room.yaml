@@ -1,0 +1,10 @@
+---
+substitutions:
+  name: d1minipro-utility-room
+  friendly_name: Utility Room
+  api_reboot_timeout: 0s
+  logger_level: VERBOSE
+
+packages:
+  common: !include modules/devices/d1-mini.yaml
+
