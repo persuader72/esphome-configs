@@ -2,7 +2,6 @@
 substitutions:
   name: shelly-button-sn01
   friendly_name: Shelly Button SN01
-  api_reboot_timeout: 0s
 
 packages:
   common: !include modules/devices/shelly-1.yaml

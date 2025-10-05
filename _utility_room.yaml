@@ -2,7 +2,6 @@
 substitutions:
   name: d1minipro-utility-room
   friendly_name: Utility Room
-  api_reboot_timeout: 0s
   logger_level: VERBOSE
 
 packages:

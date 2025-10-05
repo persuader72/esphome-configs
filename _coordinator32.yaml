@@ -1,7 +1,7 @@
 ---
 substitutions:
-  name: coordinator
-  friendly_name: Coordinator
+  name: coordinator32
+  friendly_name: Coordinator32
   api_reboot_timeout: 0s
   baud_rate: 460800
   rx_buffer_size: 2048
@@ -11,4 +11,4 @@ substitutions:
   meshmesh_channel: 6
 
 packages:
-  common: !include modules/devices/d1-mini.yaml
+  common: !include modules/devices/esp32dev.yaml

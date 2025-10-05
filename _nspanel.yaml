@@ -1,0 +1,24 @@
+substitutions:
+  device_name: "termostato"
+  temp_min: "13"
+  temp_max: "25"
+  wifi_ssid: !secret wifi_ssid
+  wifi_password: !secret wifi_password
+  heater_relay: "1"
+
+# Core and optional configurations
+packages:
+  remote_package:
+    url: https://github.com/Blackymas/NSPanel_HA_Blueprint
+    ref: v4.3.37
+    refresh: 300s
+    files:
+      - nspanel_esphome.yaml # Basic package
+      # Optional advanced and add-on configurations
+      # - esphome/nspanel_esphome_addon_climate_cool.yaml
+      - esphome/nspanel_esphome_addon_climate_heat.yaml
+      # - esphome/nspanel_esphome_addon_climate_dual.yaml
+      # - esphome/nspanel_esphome_addon_cover.yaml
+
+
+
