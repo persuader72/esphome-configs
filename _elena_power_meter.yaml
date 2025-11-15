@@ -1,0 +1,7 @@
+
+substitutions:
+  name: elena-power-meter
+  friendly_name: Elena Power Meter
+
+packages:
+  common: !include modules/devices/shelly-em.yaml

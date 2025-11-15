@@ -7,3 +7,21 @@ substitutions:
 
 packages:
   common: !include modules/devices/shelly-1.yaml
+
+ping:
+  update_interval: 120s
+  address: 0x1F6EAF
+  repeaters:
+    - 0x94E935
+
+binary_sensor:
+  - platform: ping
+    presence:
+      id: presence
+      name: Host presence
+
+sensor:
+  - platform: ping
+    latency:
+      id: latency
+      name: Ping latency
