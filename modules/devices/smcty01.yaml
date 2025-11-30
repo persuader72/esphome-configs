@@ -1,0 +1,27 @@
+---
+external_components:
+  - source: github://persuader72/esphome-components@main
+    components: [ dali ]
+
+substitutions:
+  light_name: DALI Light
+
+packages:
+  common: !include ../common-esp8266.yaml
+  meshmesh: !include ../common/meshmesh.yaml
+
+i2c:
+  sda: GPIO12
+  scl: GPIO13
+  scan: true
+  id: bus_a
+
+dali:
+  tx_pin: GPIO14
+  rx_pin: GPIO5
+
+light:
+  - platform: dali
+    id: light_1
+    name: ${light_name}
+    restore_mode: ALWAYS_ON

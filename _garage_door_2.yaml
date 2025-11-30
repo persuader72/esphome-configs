@@ -1,0 +1,11 @@
+---
+substitutions:
+  name: garage-door-2
+  friendly_name: Garage Door 2
+  api_reboot_timeout: 900s
+  meshmesh_channel: 6
+  open_duration: 13sec
+  close_duration: 26sec
+
+packages:
+  common: !include modules/devices/shelly-1-cover.yaml
