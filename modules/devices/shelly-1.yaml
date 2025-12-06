@@ -1,6 +1,8 @@
 ---
 substitutions:
   switch_name: Switch
+  switch_id: switch_1
+  switch_is_internal: false
   binary_sensor_name: Button
 
 packages:
@@ -9,9 +11,10 @@ packages:
 
 switch:
   - platform: gpio
-    id: switch_1
+    id: ${switch_id}
     name: ${switch_name}
     pin: GPIO4
+    internal: ${switch_is_internal}
 
 binary_sensor:
   - platform: gpio

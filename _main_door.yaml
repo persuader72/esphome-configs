@@ -1,0 +1,10 @@
+---
+substitutions:
+  name: main-door
+  friendly_name: Main Door
+  api_reboot_timeout: 900s
+  meshmesh_channel: 6
+
+packages:
+  common: !include modules/devices/shelly-1-cover-pulse.yaml
+

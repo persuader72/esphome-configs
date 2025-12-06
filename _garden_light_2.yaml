@@ -1,0 +1,9 @@
+---
+substitutions:
+  name: garden-light-2
+  friendly_name: Garden Light 2
+  api_reboot_timeout: 900s
+  meshmesh_channel: 6
+
+packages:
+  common: !include modules/devices/smcty01.yaml

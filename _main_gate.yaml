@@ -1,0 +1,10 @@
+---
+substitutions:
+  name: main-gate
+  friendly_name: Main Gate
+  api_reboot_timeout: 900s
+  meshmesh_channel: 6
+
+packages:
+  common: !include modules/devices/shelly-1-cover-pulse.yaml
+

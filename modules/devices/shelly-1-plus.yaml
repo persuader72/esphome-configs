@@ -1,13 +1,18 @@
 ---
 substitutions:
   switch_name: Switch
-  binary_sensor_name: Button
+  binary_sensor_name: Button1
+  button_name: Button2
+  supply_voltage_name: Supply Voltage
 
 external_components:
 #  - source: github://persuader72/esphome-components@master
 #    components: [ shelly_dallas ]
+#  - source: github://persuader72/esphome-components@master
+#    components: [ shelly ]
   - source: /home/stefano/Sviluppo/Stefano/esphome-components/components
-    components: [ shelly ]
+    components: [ dht ]
+    refresh: 0s
 
 esp32:
   board: esp32doit-devkit-v1
@@ -19,7 +24,7 @@ esp32:
       CONFIG_ESP32_DEFAULT_CPU_FREQ_MHZ: "160"
 
 packages:
-  base: !include common-base.yaml
+  base: !include ../common-base.yaml
   meshmesh: !include ../common/meshmesh.yaml
 
 switch:
@@ -30,26 +35,23 @@ switch:
 
 binary_sensor:
   - platform: gpio
-    name: "${device_name} Switch"
+    id: binary_sensor_1
+    name: ${binary_sensor_name}
     pin: GPIO4
-    on_press:
-      then:
-        - switch.toggle: "relay"
-    filters:
-      - delayed_on_off: 50ms
   - platform: gpio
-    name: "${device_name} Button"
+    id: binary_sensor_2
+    name: ${button_name}
     pin:
       number: GPIO25
       inverted: yes
       mode:
         input: true
         pullup: true
-    on_press:
-      then:
-        - switch.toggle: "relay"
-    filters:
-      - delayed_on_off: 5ms
+
+#one_wire:
+#  - platform: shelly
+#    input: GPIO1
+#    output: GPIO0
 
 sensor:
   - platform: ntc
@@ -65,7 +67,7 @@ sensor:
     on_value_range:
       - above: "80.0"
         then:
-          - switch.turn_off: "relay"
+          - switch.turn_off: switch_1
   - platform: resistance
     id: temp_resistance_reading
     sensor: temp_analog_reading
@@ -76,7 +78,7 @@ sensor:
     pin: GPIO32
     attenuation: 12db
   - platform: adc
-    name: "${device_name} Relay Supply Voltage"
+    name: ${supply_voltage_name}
     pin: GPIO33
     attenuation: 12db
     filters:
@@ -93,10 +95,11 @@ sensor:
 #    unit_of_measurement: "°C"
 #    accuracy_decimals: 1
 #    icon: "mdi:thermometer"
-  - platform: dallas_temp
-#    address: 0x1234567812345628
-    name: temperature
-    update_interval: 120s
+# ------------------------------------------------------------
+#  - platform: dallas_temp
+#    name: temperature
+#    update_interval: 120s
+# ------------------------------------------------------------
 #  - platform: shelly_dht
 #    pin_a: GPIO1
 #    pin_b: GPIO0
@@ -104,4 +107,13 @@ sensor:
 #      name: "Living Room Temperature"
 #    humidity:
 #      name: "Living Room Humidity"
-#    update_interval: 60s 
+#    update_interval: 60s
+# ------------------------------------------------------------
+  - platform: dht
+    input: GPIO1
+    output: GPIO0
+    temperature:
+      name: "Temperature"
+    humidity:
+      name: "Humidity"
+    update_interval: 120s

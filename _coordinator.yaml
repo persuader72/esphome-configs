@@ -12,3 +12,6 @@ substitutions:
 
 packages:
   common: !include modules/devices/d1-mini.yaml
+
+
+ping:

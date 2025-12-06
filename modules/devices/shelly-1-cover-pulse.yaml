@@ -1,0 +1,23 @@
+---
+substitutions:
+  cover_name: Cover
+
+packages:
+  common: !include 
+    file: shelly-1.yaml
+    vars:
+      switch_is_internal: true
+
+cover:
+  - platform: template
+    name: ${cover_name}
+    id: cover_1
+    device_class: garage
+    open_action:
+      - switch.turn_off: ${switch_id}
+      - switch.turn_on: ${switch_id}
+      - delay: 0.5s
+      - switch.turn_off: ${switch_id}
+    optimistic: true
+    assumed_state: true
+

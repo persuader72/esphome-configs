@@ -1,10 +1,10 @@
 ---
-external_components:
-  - source: github://persuader72/esphome-components@main
-    components: [ dali ]
-
 substitutions:
-  light_name: DALI Light
+  light_name: Light
+
+external_components:
+  - source: github://persuader72/esphome-components@master
+    components: [ dali ]
 
 packages:
   common: !include ../common-esp8266.yaml
