@@ -2,6 +2,7 @@
 substitutions:
   name: shelly-button-sn01
   friendly_name: Shelly Button SN01
+  meshmesh_version: dev
 
 packages:
   common: !include modules/devices/shelly-1.yaml

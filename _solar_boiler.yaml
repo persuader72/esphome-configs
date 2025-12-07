@@ -1,0 +1,47 @@
+---
+substitutions:
+  name: solar-boiler
+  friendly_name: Solar Boiler
+  meshmesh_version: main
+
+packages:
+  common: !include modules/devices/shelly-1.yaml
+  
+external_components:
+  - source:
+      type: git
+      url: https://github.com/persuader72/esphome-components.git
+      ref: master
+    components: [ shelly_dallas ]
+
+shelly_dallas:
+  #pin: GPIO12
+  #pin_a: GPIO13
+  pin_a: GPIO3
+  pin_b: GPIO0
+
+sensor:
+  - platform: shelly_dallas
+    address: 0xCA011938282E5128
+    name: "Temperature #1"
+  - platform: shelly_dallas
+    address: 0x0B01193807DD3128
+    name: "Temperature #2"
+#    on_value_range:
+#    - above: 58.0
+#      then:
+#        - switch.turn_off: ${board_name}_${device_num}_relay
+#    - below: 50.0
+#      then:
+#        - switch.turn_on: ${board_name}_${device_num}_relay
+  - platform: shelly_dallas
+    address: 0x6E0119384DC70728
+    name: "Temperature #3"
+#   - platform: shelly_dht
+#    pin_a: GPIO13
+#    pin_b: GPIO12
+#    temperature:
+#      name: "Living Room Temperature"
+#    humidity:
+#      name: "Living Room Humidity"
+#    update_interval: 60s
