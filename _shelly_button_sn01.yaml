@@ -6,3 +6,10 @@ substitutions:
 
 packages:
   common: !include modules/devices/shelly-1.yaml
+
+meshmesh:
+  is_coordinator: true
+  use_starpath: true
+
+ping:
+

@@ -5,8 +5,6 @@ substitutions:
   tx_buffer_size: 0
   meshmesh_channel: 6
   meshmesh_version: main
-  meshmesh_coordinator: false
-  meshmesh_starpath: false
 
 external_components:
   - source: github://EspMeshMesh/esphome-meshmesh@${meshmesh_version}
@@ -23,5 +21,3 @@ meshmesh:
   tx_buffer_size: ${tx_buffer_size}
   password: !secret meshmesh_password
   channel: ${meshmesh_channel}
-  is_coordinator: ${meshmesh_coordinator}
-  use_starpath: ${meshmesh_starpath}
