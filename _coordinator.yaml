@@ -19,3 +19,4 @@ meshmesh:
   use_starpath: true
 
 ping:
+  address: server

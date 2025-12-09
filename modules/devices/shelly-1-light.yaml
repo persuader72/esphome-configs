@@ -1,0 +1,26 @@
+---
+substitutions:
+  light_name: Light
+  binary_sensor_name: Button
+
+packages:
+  common: !include ../common-esp8266.yaml
+  meshmesh: !include ../common/meshmesh.yaml
+
+output:
+  - platform: gpio
+    pin: GPIO4
+    id: output_1
+
+light:
+  - platform: binary
+    id: light_1
+    name: ${light_name}
+    output: output_1
+    restore_mode: RESTORE_DEFAULT_OFF
+
+binary_sensor:
+  - platform: gpio
+    id: binary_sensor_1
+    name: ${binary_sensor_name}
+    pin: GPIO5                    

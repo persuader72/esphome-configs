@@ -1,0 +1,10 @@
+---
+substitutions:
+  name: shelly-button-sn04
+  friendly_name: Shelly Button SN04
+  meshmesh_version: main
+
+packages:
+  common: !include modules/devices/shelly-1-light.yaml
+
+
