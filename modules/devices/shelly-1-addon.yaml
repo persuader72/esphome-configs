@@ -1,0 +1,38 @@
+---
+substitutions:
+  switch_name: Switch
+  switch_id: switch_1
+  switch_is_internal: false
+  binary_sensor_name: Button
+
+packages:
+  shelly1: !include ./shelly-1.yaml
+
+external_components:
+  - source: github://persuader72/esphome-components@master
+    components: [ shelly_dallas ]
+#  - source: github://persuader72/esphome-components@master
+#    components: [ shelly_dht ]
+
+shelly_dallas:
+  pin_a: GPIO3
+  pin_b: GPIO0
+
+sensor:
+  - platform: shelly_dallas
+    address: 0xCA011938282E5128
+    name: "Temperature #1"
+  - platform: shelly_dallas
+    address: 0x0B01193807DD3128
+    name: "Temperature #2"
+  - platform: shelly_dallas
+    address: 0x6E0119384DC70728
+    name: "Temperature #3"
+#  - platform: shelly_dht
+#    pin_a: GPIO13
+#    pin_b: GPIO12
+#    temperature:
+#      name: "Living Room Temperature"
+#    humidity:
+#      name: "Living Room Humidity"
+#    update_interval: 60s

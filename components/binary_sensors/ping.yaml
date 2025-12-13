@@ -1,0 +1,10 @@
+---
+substitutions:
+  ping_presence_id: ping_presence
+  ping_presence_name: Host presence
+
+binary_sensor:
+  - platform: ping
+    presence:
+      id: ${ping_presence_id}
+      name: ${ping_presence_name}

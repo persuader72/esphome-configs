@@ -1,0 +1,10 @@
+---
+substitutions:
+  ping_latency_id: ping_latency
+  ping_latency_name: Ping latency
+
+sensor:
+  - platform: ping
+    latency:
+      id: ${ping_latency_id}
+      name: ${ping_latency_name}

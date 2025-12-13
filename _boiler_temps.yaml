@@ -1,0 +1,10 @@
+---
+substitutions:
+  name: boiler-temps
+  friendly_name: Boiler Temperatures
+  meshmesh_version: main
+
+packages:
+  common: !include modules/devices/shelly-1-addon.yaml
+
+

@@ -1,0 +1,12 @@
+---
+substitutions:
+  ping_update_interval: 120s
+  ping_address: coordinator
+
+ping:
+  update_interval: ${ping_update_interval}
+  address: ${ping_address}
+
+packages:
+  binary_sensors: !include ../binary_sensors/ping.yaml
+  sensors: !include ../sensors/ping.yaml

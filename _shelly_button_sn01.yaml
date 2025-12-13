@@ -2,14 +2,8 @@
 substitutions:
   name: shelly-button-sn01
   friendly_name: Shelly Button SN01
-  meshmesh_version: dev
 
 packages:
   common: !include modules/devices/shelly-1.yaml
-
-meshmesh:
-  is_coordinator: true
-  use_starpath: true
-
-ping:
+  ping: !include components/ping/common.yaml
 
