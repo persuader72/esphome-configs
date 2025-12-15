@@ -2,8 +2,8 @@
 substitutions:
   name: shelly-button-sn01
   friendly_name: Shelly Button SN01
+  logger_level: INFO
 
 packages:
   common: !include modules/devices/shelly-1.yaml
-  ping: !include components/ping/common.yaml
 

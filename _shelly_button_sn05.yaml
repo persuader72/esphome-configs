@@ -1,0 +1,9 @@
+---
+substitutions:
+  name: shelly-button-sn05
+  friendly_name: Shelly Button SN05
+  meshmesh_version: main
+
+packages:
+  common: !include modules/devices/shelly-1.yaml
+

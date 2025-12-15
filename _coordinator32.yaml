@@ -1,7 +1,6 @@
 ---
 substitutions:
   name: coordinator32
-  board: esp32-evb
   friendly_name: Coordinator32
   api_reboot_timeout: 0s
   baud_rate: 115200
@@ -12,11 +11,10 @@ substitutions:
   meshmesh_channel: 6
 
 packages:
-  common: !include modules/devices/esp32dev.yaml
-
-meshmesh:
-  is_coordinator: true
-  use_starpath: true
+  common: !include modules/devices/esp32evb.yaml
 
 ping:
   address: server
+
+meshmesh:
+  is_coordinator: true

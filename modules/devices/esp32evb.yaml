@@ -1,0 +1,10 @@
+---
+substitutions:
+  switch_name: Switch
+  board: esp32-evb
+  switch_restore_mode: RESTORE_DEFAULT_OFF
+
+packages:
+  common: !include ../common-esp32.yaml
+  meshmesh: !include ../common/meshmesh.yaml
+

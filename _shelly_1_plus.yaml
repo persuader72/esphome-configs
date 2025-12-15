@@ -2,7 +2,7 @@
 substitutions:
   name: shelly-1-plus
   friendly_name: Shelly 1 Plus
-  meshmesh_version: dev
+  meshmesh_version: main
 packages:
   common: !include modules/devices/shelly-1-plus.yaml
 

@@ -1,0 +1,16 @@
+---
+substitutions:
+  name: repeater
+  friendly_name: Repeater
+  logger_level: DEBUG
+  api_reboot_timeout: 0s
+  meshmesh_version: main
+
+packages:
+  common: !include modules/devices/d1-mini.yaml
+
+meshmesh:
+  use_starpath: true
+
+ping:
+  address: coordinator
