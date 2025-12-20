@@ -23,4 +23,8 @@ binary_sensor:
   - platform: gpio
     id: binary_sensor_1
     name: ${binary_sensor_name}
-    pin: GPIO5                    
+    pin: GPIO5
+    internal: true
+    on_state:
+      then:
+        - light.toggle: light_1                 

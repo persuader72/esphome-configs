@@ -9,14 +9,13 @@ substitutions:
   logger_level: INFO
   logger_baud_rate: 0
   meshmesh_channel: 6
-  meshmesh_version: dev
+  meshmesh_version: main
 
 packages:
   common: !include modules/devices/d1-mini.yaml
 
 meshmesh:
   is_coordinator: true
-  use_starpath: true
 
 ping:
   address: server
