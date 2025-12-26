@@ -7,9 +7,8 @@ substitutions:
   meshmesh_version: main
 
 external_components:
-  #- source: github://EspMeshMesh/esphome-meshmesh@${meshmesh_version}
-  - source: /home/stefano/Sviluppo/Stefano/Meshmesh/workspace/esphome-meshmesh/components/
-    refresh: 0s
+  - source: github://EspMeshMesh/esphome-meshmesh@${meshmesh_version}
+    refresh: 24h
 
 mdns:
   disabled: true

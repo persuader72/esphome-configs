@@ -1,7 +1,6 @@
 ---
 substitutions:
   switch_name: Switch
-  binary_sensor_name: Button
   # 120A clamp (3000:1): 1.143207411
   # 50A clamp (2400:1): 1.156612516
   # 50A Victron clamp (2000:1): 0.76
@@ -17,11 +16,6 @@ packages:
 i2c:
   sda: GPIO12
   scl: GPIO14
-
-status_led:
-  pin:
-    number: GPIO0
-    inverted: yes
 
 switch:
   - platform: gpio

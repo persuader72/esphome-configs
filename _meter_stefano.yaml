@@ -1,0 +1,9 @@
+---
+substitutions:
+  name: meter-stefano
+  friendly_name: Contatore Stefano
+
+packages:
+  common: !include modules/devices/shelly-em.yaml
+
+

@@ -2,7 +2,6 @@
 substitutions:
   name: garage_door_1
   friendly_name: Garage Door 1
-  api_reboot_timeout: 900s
   meshmesh_channel: 6
   open_duration: 13sec
   close_duration: 26sec
