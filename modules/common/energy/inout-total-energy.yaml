@@ -1,0 +1,57 @@
+---
+substitutions:
+  power_sensor_id: power
+  power_out_id: power_out
+  power_in_id: power_in
+  energy_in_id: energy_in
+  energy_in_name: "Energy In"
+  energy_out_id: energy_out
+  energy_out_name: "Energy Out"
+
+sensor:
+# Phase 1
+- platform: template
+  id: ${power_in_id}
+  lambda: |-
+    return id(${power_sensor_id}).state <= 0.0 ? 0.0 : id(${power_sensor_id}).state;
+  device_class: power
+  state_class: measurement
+  unit_of_measurement: W
+  internal: true
+  filters:
+    - throttle: 15s
+
+- platform: template
+  id: ${power_out_id}
+  lambda: |-
+    return id(${power_sensor_id}).state >= 0.0 ? 0.0 : -id(${power_sensor_id}).state;
+  device_class: power
+  state_class: measurement
+  unit_of_measurement: W
+  internal: true
+  filters:
+    - throttle: 15s
+
+- platform: total_daily_energy
+  name: ${energy_out_name}
+  id: ${energy_out_id}
+  power_id: ${power_out_id}
+  filters:
+    # Multiplication factor from W to kWh is 0.001
+    - multiply: 0.001
+    - throttle: 60s
+  unit_of_measurement: kWh
+  state_class: total_increasing
+  device_class: energy
+
+- platform: total_daily_energy
+  name: ${energy_in_name}
+  id: ${energy_in_id}
+  power_id: ${power_in_id}
+  filters:
+    # Multiplication factor from W to kWh is 0.001
+    - multiply: 0.001
+    - throttle: 60s
+  unit_of_measurement: kWh
+  state_class: total_increasing
+  device_class: energy

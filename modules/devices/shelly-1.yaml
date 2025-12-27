@@ -8,13 +8,7 @@ substitutions:
 packages:
   common: !include ../common-esp8266.yaml
   meshmesh: !include ../common/meshmesh.yaml
-
-switch:
-  - platform: gpio
-    id: ${switch_id}
-    name: ${switch_name}
-    pin: GPIO4
-    internal: ${switch_is_internal}
+  switch: !include ../common/switches/shelly.yaml
 
 binary_sensor:
   - platform: gpio

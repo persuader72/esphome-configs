@@ -12,16 +12,33 @@ substitutions:
 packages:
   common: !include ../common-esp8266.yaml
   meshmesh: !include ../common/meshmesh.yaml
+  switch: !include 
+    file: ../common/switches/shelly.yaml
+    vars:
+      switch_id: switch_1
+      switch_name: Switch
+      switch_pin: GPIO15
+      switch_is_internal: false
+  energy1: !include 
+    file: ../common/energy/inout-total-energy.yaml
+    vars:
+      power_sensor_id: power_phase_1
+      power_out_id: power_out_phase_1
+      power_in_id: power_in_phase_1
+      energy_in_id: energy_in_phase_1
+      energy_in_name: "Phase 1 Energy In"
+      energy_out_id: energy_out_phase_1
+      energy_out_name: "Phase 1 Energy Out"
+  energy2: !include 
+    file: ../common/energy/in-total-energy.yaml
+    vars:
+      power_sensor_id: power_phase_2
+      energy_id: energy_phase_2
+      energy_name: "Phase 2 Energy"
 
 i2c:
   sda: GPIO12
   scl: GPIO14
-
-switch:
-  - platform: gpio
-    id: switch_1
-    name: ${switch_name}
-    pin: GPIO15
 
 sensor:
   - platform: ade7953_i2c
@@ -117,65 +134,6 @@ sensor:
           - throttle_average: 15s
     # Short (internal) update interval while using the throttling settings in all sensors above (provides results close to the native Shellys)
     update_interval: 10s
-
-  # Derived sensors
-  - platform: template
-    id: power_in_phase_1
-    name: "Phase 1 Power In"
-    lambda: |-
-      return id(power_phase_1).state <= 0.0 ? 0.0 : id(power_phase_1).state;
-    device_class: power
-    state_class: measurement
-    unit_of_measurement: W
-    filters:
-      - throttle: 15s
-
-  - platform: template
-    id: power_out_phase_1
-    name: "Phase 1 Power Out"
-    lambda: |-
-      return id(power_phase_1).state >= 0.0 ? 0.0 : -id(power_phase_1).state;
-    device_class: power
-    state_class: measurement
-    unit_of_measurement: W
-    filters:
-      - throttle: 15s
-
-  - platform: total_daily_energy
-    name: "Phase 1 Energy In"
-    id: energy_in_phase_1
-    power_id: power_in_phase_1
-    filters:
-      # Multiplication factor from W to kWh is 0.001
-      - multiply: 0.001
-      - throttle: 60s
-    unit_of_measurement: kWh
-    state_class: total_increasing
-    device_class: energy
-
-  - platform: total_daily_energy
-    name: "Phase 1 Energy Out"
-    id: energy_out_phase_1
-    power_id: power_out_phase_1
-    filters:
-      # Multiplication factor from W to kWh is 0.001
-      - multiply: 0.001
-      - throttle: 60s
-    unit_of_measurement: kWh
-    state_class: total_increasing
-    device_class: energy
-
-  - platform: total_daily_energy
-    name: Phase 2 Energy
-    id: energy_in_phase_2
-    power_id: power_phase_2
-    filters:
-      # Multiplication factor from W to kWh is 0.001
-      - multiply: 0.001
-      - throttle: 60s
-    unit_of_measurement: kWh
-    state_class: total_increasing
-    device_class: energy
 
     # NTC Temperature
   - platform: ntc

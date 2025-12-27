@@ -1,0 +1,13 @@
+---
+substitutions:
+  switch_id: switch_1
+  switch_name: Switch
+  switch_pin: GPIO4
+  switch_is_internal: false
+
+switch:
+  - platform: gpio
+    id: ${switch_id}
+    name: ${switch_name}
+    pin: ${switch_pin}
+    internal: ${switch_is_internal}

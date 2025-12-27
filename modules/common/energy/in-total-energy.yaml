@@ -1,0 +1,21 @@
+---
+substitutions:
+  power_sensor_id: power
+  energy_id: energy
+  energy_name: "Energy"
+
+sensor:
+# Phase 1
+
+- platform: total_daily_energy
+  name: ${energy_name}
+  id: ${energy_id}
+  power_id: ${power_sensor_id}
+  filters:
+    # Multiplication factor from W to kWh is 0.001
+    - multiply: 0.001
+    - throttle: 60s
+  unit_of_measurement: kWh
+  state_class: total_increasing
+  device_class: energy
+
