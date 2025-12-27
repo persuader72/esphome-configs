@@ -120,10 +120,10 @@ sensor:
 
   # Derived sensors
   - platform: template
-    id: power_in_phase_2
-    name: "Phase 2 Power In"
+    id: power_in_phase_1
+    name: "Phase 1 Power In"
     lambda: |-
-      return id(power_phase_2).state <= 0.0 ? 0.0 : id(power_phase_2).state;
+      return id(power_phase_1).state <= 0.0 ? 0.0 : id(power_phase_1).state;
     device_class: power
     state_class: measurement
     unit_of_measurement: W
@@ -131,10 +131,10 @@ sensor:
       - throttle: 15s
 
   - platform: template
-    id: power_out_phase_2
-    name: "Phase 2 Power Out"
+    id: power_out_phase_1
+    name: "Phase 1 Power Out"
     lambda: |-
-      return id(power_phase_2).state >= 0.0 ? 0.0 : -id(power_phase_2).state;
+      return id(power_phase_1).state >= 0.0 ? 0.0 : -id(power_phase_1).state;
     device_class: power
     state_class: measurement
     unit_of_measurement: W
@@ -142,9 +142,9 @@ sensor:
       - throttle: 15s
 
   - platform: total_daily_energy
-    name: "Phase 2 Energy In"
-    id: energy_phase_2
-    power_id: power_in_phase_2
+    name: "Phase 1 Energy In"
+    id: energy_in_phase_1
+    power_id: power_in_phase_1
     filters:
       # Multiplication factor from W to kWh is 0.001
       - multiply: 0.001
@@ -154,9 +154,9 @@ sensor:
     device_class: energy
 
   - platform: total_daily_energy
-    name: "Phase 2 Energy Out"
-    id: energy_out_phase_2
-    power_id: power_out_phase_2
+    name: "Phase 1 Energy Out"
+    id: energy_out_phase_1
+    power_id: power_out_phase_1
     filters:
       # Multiplication factor from W to kWh is 0.001
       - multiply: 0.001
@@ -166,9 +166,9 @@ sensor:
     device_class: energy
 
   - platform: total_daily_energy
-    name: Phase 1 Energy
-    id: energy_phase_1
-    power_id: power_phase_1
+    name: Phase 2 Energy
+    id: energy_in_phase_2
+    power_id: power_phase_2
     filters:
       # Multiplication factor from W to kWh is 0.001
       - multiply: 0.001
