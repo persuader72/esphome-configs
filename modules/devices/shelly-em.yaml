@@ -8,6 +8,7 @@ substitutions:
   scale_b_power: '1.156612516'
   # Consider calibrating CT clamps, measurements were closer to the stock Shelly EM firmware for me without calibration
   # See: https://community.home-assistant.io/t/anyone-using-shelly-em/149867
+  switch_is_internal: true
 
 packages:
   common: !include ../common-esp8266.yaml
@@ -18,7 +19,7 @@ packages:
       switch_id: switch_1
       switch_name: Switch
       switch_pin: GPIO15
-      switch_is_internal: false
+      switch_is_internal: ${switch_is_internal}
   energy1: !include 
     file: ../common/energy/inout-total-energy.yaml
     vars:
