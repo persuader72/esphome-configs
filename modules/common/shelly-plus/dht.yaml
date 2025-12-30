@@ -1,0 +1,23 @@
+---
+substitutions:
+  temperature_id: temperature
+  temperature_name: Temperature
+  humidity_id: humidity
+  humidity_name: Humidity
+  update_interval: 120s
+
+external_components:
+  - source: github://persuader72/esphome-components@master
+    components: [ dht ]
+
+sensor:
+  - platform: dht
+    input: GPIO1
+    output: GPIO0
+    temperature:
+      id: ${temperature_id}
+      name: ${temperature_name}
+    humidity:
+      id: ${humidity_id}
+      name: ${humidity_name}
+    update_interval: 120s

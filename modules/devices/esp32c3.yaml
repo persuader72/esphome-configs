@@ -1,0 +1,17 @@
+---
+substitutions:
+  switch_name: Switch
+  switch_restore_mode: RESTORE_DEFAULT_OFF
+
+packages:
+  common: !include ../common-esp32.yaml
+  meshmesh: !include ../common/meshmesh-local.yaml
+
+switch:
+  - platform: gpio
+    id: switch_1
+    name: ${switch_name}
+    restore_mode: ${switch_restore_mode}
+    pin: GPIO2
+
+

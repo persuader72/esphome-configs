@@ -5,15 +5,6 @@ substitutions:
   button_name: Button2
   supply_voltage_name: Supply Voltage
 
-external_components:
-#  - source: github://persuader72/esphome-components@master
-#    components: [ shelly_dallas ]
-#  - source: github://persuader72/esphome-components@master
-#    components: [ shelly ]
-  - source: /home/stefano/Sviluppo/Stefano/esphome-components/components
-    components: [ dht ]
-    refresh: 0s
-
 esp32:
   board: esp32doit-devkit-v1
   framework:
@@ -22,10 +13,6 @@ esp32:
       CONFIG_FREERTOS_UNICORE: y
       CONFIG_ESP32_DEFAULT_CPU_FREQ_160: y
       CONFIG_ESP32_DEFAULT_CPU_FREQ_MHZ: "160"
-
-packages:
-  base: !include ../common-base.yaml
-  meshmesh: !include ../common/meshmesh.yaml
 
 switch:
   - platform: gpio
@@ -47,11 +34,6 @@ binary_sensor:
       mode:
         input: true
         pullup: true
-
-#one_wire:
-#  - platform: shelly
-#    input: GPIO1
-#    output: GPIO0
 
 sensor:
   - platform: ntc
@@ -83,37 +65,9 @@ sensor:
     attenuation: 12db
     filters:
       - multiply: 8
-#  - platform: shelly_dallas
-#    index: 0
-#    name: "External Temperature1"
-#    unit_of_measurement: "°C"
-#    accuracy_decimals: 1
-#    icon: "mdi:thermometer"
-#  - platform: shelly_dallas
-#    index: 1
-#    name: "External Temperature2"
-#    unit_of_measurement: "°C"
-#    accuracy_decimals: 1
-#    icon: "mdi:thermometer"
-# ------------------------------------------------------------
-#  - platform: dallas_temp
-#    name: temperature
-#    update_interval: 120s
-# ------------------------------------------------------------
-#  - platform: shelly_dht
-#    pin_a: GPIO1
-#    pin_b: GPIO0
-#    temperature:
-#      name: "Living Room Temperature"
-#    humidity:
-#      name: "Living Room Humidity"
-#    update_interval: 60s
-# ------------------------------------------------------------
-  - platform: dht
-    input: GPIO1
-    output: GPIO0
-    temperature:
-      name: "Temperature"
-    humidity:
-      name: "Humidity"
-    update_interval: 120s
+
+packages:
+  base: !include ../common-base.yaml
+  meshmesh: !include ../common/meshmesh.yaml
+  dallas: !include ../common/shelly-plus/dallas.yaml
+  #dht: !include ../common/shelly-plus/dht.yaml
