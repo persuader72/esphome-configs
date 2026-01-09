@@ -17,4 +17,4 @@ ping:
   address: server
 
 meshmesh:
-  is_coordinator: true
+  node_type: coordinator

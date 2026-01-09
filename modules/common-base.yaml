@@ -3,6 +3,7 @@ substitutions:
   api_reboot_timeout: 15min
   logger_baud_rate: 115200
   logger_level: INFO
+  logger_hardware_uart: UART0
 
 esphome:
   name: ${name}
@@ -22,6 +23,7 @@ api:
 logger:
   level: ${logger_level}
   baud_rate: ${logger_baud_rate}
+  hardware_uart: ${logger_hardware_uart}
 
 time:
   - platform: homeassistant

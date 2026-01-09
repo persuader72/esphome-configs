@@ -5,10 +5,11 @@ substitutions:
   tx_buffer_size: 0
   meshmesh_channel: 6
   meshmesh_version: main
+  meshmesh_node_type: backbone
 
 external_components:
   - source: github://EspMeshMesh/esphome-meshmesh@${meshmesh_version}
-    refresh: 24h
+    refresh: 0h
 
 mdns:
   disabled: true
@@ -22,4 +23,5 @@ meshmesh:
   tx_buffer_size: ${tx_buffer_size}
   password: !secret meshmesh_password
   channel: ${meshmesh_channel}
+  node_type: ${meshmesh_node_type}
   use_starpath: true

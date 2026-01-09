@@ -1,0 +1,6 @@
+---
+substitutions:
+
+packages:
+  common: !include ../common-esp32c3.yaml
+  meshmesh: !include ../common/meshmesh.yaml
