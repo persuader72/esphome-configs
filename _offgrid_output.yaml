@@ -2,7 +2,7 @@
 substitutions:
   name: offgrid_output
   friendly_name: Offgrid Inverter Output
-  api_reboot_timeout: 0s
+  api_reboot_timeout: 900s
   meshmesh_channel: 6
 
 packages:

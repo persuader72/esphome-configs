@@ -10,7 +10,7 @@ substitutions:
 packages:
   remote_package:
     url: https://github.com/Blackymas/NSPanel_HA_Blueprint
-    ref: v4.3.37
+    ref: v2025120
     refresh: 300s
     files:
       - nspanel_esphome.yaml # Basic package

@@ -34,7 +34,11 @@ switch:
 #    turn_off_action:
 #      - deep_sleep.enter: deep_sleep_1
 
+binary_sensor:
+  - id: !remove system_status
+
 sensor:
+  - id: !remove uptime_sensor
   - platform: dht
     pin: GPIO3
     model: DHT22
