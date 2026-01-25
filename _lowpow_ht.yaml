@@ -5,9 +5,27 @@ substitutions:
   meshmesh_channel: 6
   meshmesh_node_type: edge
   logger_hardware_uart: USB_CDC
+  logger_level: INFO
 
 packages:
   common: !include modules/devices/super-mini.yaml
+
+esphome:
+  on_shutdown:
+    - priority: 600
+      then:
+        - max17043.sleep_mode: max17043_id
+
+api:
+  on_client_connected:
+    - delay: 10s
+    - deep_sleep.enter: deep_sleep_1
+
+i2c:
+  sda: GPIO8
+  scl: GPIO9
+  id: i2c_max17043
+  scan: false
 
 deep_sleep:
   id: deep_sleep_1
@@ -41,32 +59,31 @@ sensor:
   - id: !remove uptime_sensor
   - platform: dht
     pin: GPIO3
-    model: DHT22
+    model: AM2302
     temperature:
       id: temperature
       name: "Temperature"
     humidity:
       id: humidity
       name: "Humidity"
-    update_interval: 10s
-  - platform: adc
-    pin: GPIO4
-    id: battery
-    name: "Battery"
-    accuracy_decimals: 2
-    update_interval: 10s
-    attenuation: 12dB
-    samples: 10
-    filters:
-      - multiply: 2.0  # The voltage divider requires us to multiply by 2
-
-light:
-  - platform: status_led
-    name: "Status LED"
-    id: esp_status_led
-    icon: "mdi:alarm-light"
-    pin:
-      number: GPIO8
-      inverted: true
-    restore_mode: ALWAYS_OFF
+    update_interval: 60s
+  #- platform: adc
+  #  pin: GPIO4
+  #  id: battery
+  #  name: "Battery"
+  #  accuracy_decimals: 2
+  #  update_interval: 10s
+  #  attenuation: 12dB
+  #  samples: 10
+  #  filters:
+  #    - multiply: 2.0  # The voltage divider requires us to multiply by 2
+  - platform: max17043
+    id: max17043_id
+    i2c_id: i2c_max17043
+    battery_voltage:
+      name: "Battery Voltage"
+      id: battery_voltage
+    battery_level:
+      name: "Battery"
+      id: battery_level
 

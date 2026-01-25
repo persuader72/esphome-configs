@@ -6,6 +6,7 @@ substitutions:
   meshmesh_channel: 6
   meshmesh_version: main
   meshmesh_node_type: backbone
+  meshmesh_use_starpath: true
 
 external_components:
   - source: github://EspMeshMesh/esphome-meshmesh@${meshmesh_version}
@@ -24,4 +25,4 @@ meshmesh:
   password: !secret meshmesh_password
   channel: ${meshmesh_channel}
   node_type: ${meshmesh_node_type}
-  use_starpath: true
+  use_starpath: ${meshmesh_use_starpath}
