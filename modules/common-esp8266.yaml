@@ -6,6 +6,7 @@ substitutions:
 
 esp8266:
   board: "${board}"
+  enable_serial: true
   framework:
     version: 3.1.2
   restore_from_flash: ${esp8266_restore_from_flash}

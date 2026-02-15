@@ -69,5 +69,5 @@ sensor:
 packages:
   base: !include ../common-base.yaml
   meshmesh: !include ../common/meshmesh.yaml
-  dallas: !include ../common/shelly-plus/dallas.yaml
-  #dht: !include ../common/shelly-plus/dht.yaml
+  #dallas: !include ../common/shelly-plus/dallas.yaml
+  dht: !include ../common/shelly-plus/dht.yaml

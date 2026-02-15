@@ -14,6 +14,7 @@ sensor:
   - platform: dht
     input: GPIO1
     output: GPIO0
+    model: AM2302
     temperature:
       id: ${temperature_id}
       name: ${temperature_name}
