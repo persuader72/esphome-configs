@@ -14,7 +14,7 @@ packages:
   common: !include modules/devices/d1-mini.yaml
 
 meshmesh:
-  is_coordinator: true
+  node_type: coordinator
 
 ping:
   address: server
