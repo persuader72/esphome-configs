@@ -18,7 +18,7 @@ mdns:
   disabled: true
 
 socket:
-  implementation: meshmesh_${meshmsh_socket_implem}
+  implementation: meshmesh_${meshmesh_socket_implem}
 
 meshmesh:
   baud_rate: ${baud_rate}
