@@ -8,6 +8,7 @@ substitutions:
   tx_buffer_size: 4096
   logger_level: INFO
   logger_baud_rate: 0
+  meshmesh_version: dev
 
 packages:
   common: !include modules/devices/esp32evb.yaml
@@ -16,7 +17,6 @@ packages:
 ping:
   mesh_address:
     address: server
-
 
 meshmesh:
   node_type: coordinator

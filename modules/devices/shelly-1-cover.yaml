@@ -4,6 +4,7 @@ substitutions:
   binary_sensor_name: Button
   open_duration: 1min
   close_duration: 1min
+  meshmesh_socket_implem: esp8266
 
 packages:
   common: !include ../common-esp8266.yaml

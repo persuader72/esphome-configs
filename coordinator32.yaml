@@ -1,0 +1,8 @@
+---
+packages:
+  remote_package:
+    url: https://github.com/persuader72/esphome-configs
+    ref: main
+    refresh: 0s
+    files:
+      - _coordinator32.yaml 

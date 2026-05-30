@@ -2,7 +2,7 @@
 substitutions:
   light_name: Light
   binary_sensor_name: Button
-  meshmsh_socket_implem: esp8266
+  meshmesh_socket_implem: esp8266
 
 packages:
   common: !include ../common-esp8266.yaml

@@ -7,7 +7,8 @@ substitutions:
   meshmesh_version: main
   meshmesh_node_type: backbone
   meshmesh_use_starpath: true
-  meshmsh_socket_implem: esp32
+  meshmesh_socket_implem: esp32
+  meshmesh_password: 012345678
 
 external_components:
   - source: /home/stefano/Sviluppo/Stefano/Meshmesh/workspace/esphome-meshmesh/components
@@ -17,12 +18,12 @@ mdns:
   disabled: true
 
 socket:
-  implementation: meshmesh_${meshmsh_socket_implem}
+  implementation: meshmesh_${meshmesh_socket_implem}
 
 meshmesh:
   baud_rate: ${baud_rate}
   rx_buffer_size: ${rx_buffer_size}
   tx_buffer_size: ${tx_buffer_size}
-  password: !secret meshmesh_password
+  password: ${meshmesh_password}
   channel: ${meshmesh_channel}
   use_starpath: true

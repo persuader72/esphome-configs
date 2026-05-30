@@ -1,6 +1,6 @@
 ---
 substitutions:
-  meshmsh_socket_implem: esp8266
+  meshmesh_socket_implem: esp8266
 
 packages:
   common: !include ../common-esp8266.yaml
