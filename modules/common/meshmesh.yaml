@@ -8,7 +8,7 @@ substitutions:
   meshmesh_node_type: backbone
   meshmesh_use_starpath: true
   meshmesh_socket_implem: esp32
-  meshmesh_password: 012345678
+  meshmesh_password: ""
 
 external_components:
   - source: github://EspMeshMesh/esphome-meshmesh@${meshmesh_version}

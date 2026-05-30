@@ -6,3 +6,7 @@ packages:
     refresh: 0s
     files:
       - _coordinator32.yaml 
+
+substitutions:
+  meshmesh_password: !secret meshmesh_password
+
