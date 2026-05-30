@@ -1,6 +1,5 @@
 /venv/
 /.esphome/
-/secrets.yaml
 /builds/
 /backups
 /esphome-configs
