@@ -8,14 +8,16 @@ substitutions:
   tx_buffer_size: 4096
   logger_level: INFO
   logger_baud_rate: 0
-  meshmesh_channel: 6
+  meshmesh_version: dev
 
 packages:
   common: !include modules/devices/esp32evb.yaml
   #common: !include modules/devices/lilygo-t-oi-plus.yaml
 
 ping:
-  address: server
+  mesh_address:
+    address: server
+
 
 meshmesh:
   node_type: coordinator
