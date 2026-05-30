@@ -7,6 +7,7 @@ substitutions:
   meshmesh_version: main
   meshmesh_node_type: backbone
   meshmesh_use_starpath: true
+  meshmsh_socket_implem: esp32
 
 external_components:
   - source: github://EspMeshMesh/esphome-meshmesh@${meshmesh_version}
@@ -16,7 +17,7 @@ mdns:
   disabled: true
 
 socket:
-  implementation: meshmesh_esp8266
+  implementation: meshmesh_${meshmsh_socket_implem}
 
 meshmesh:
   baud_rate: ${baud_rate}

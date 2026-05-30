@@ -6,5 +6,5 @@ substitutions:
 
 packages:
   common: !include ../common-esp32.yaml
-  meshmesh: !include ../common/meshmesh.yaml
+  meshmesh: !include ../common/meshmesh-local.yaml
 

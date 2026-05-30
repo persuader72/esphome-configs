@@ -9,6 +9,7 @@ substitutions:
   # Consider calibrating CT clamps, measurements were closer to the stock Shelly EM firmware for me without calibration
   # See: https://community.home-assistant.io/t/anyone-using-shelly-em/149867
   switch_is_internal: true
+  meshmsh_socket_implem: esp8266
 
 packages:
   common: !include ../common-esp8266.yaml

@@ -1,7 +1,13 @@
 ---
+substitutions:
+  meshmsh_socket_implem: esp8266
+
 packages:
   common: !include ../common-esp8266.yaml
-  meshmesh: !include ../common/meshmesh.yaml
+  meshmesh: !include ../common/meshmesh-local.yaml
+    vars:
+      meshmesh_node_type: ${meshmesh_node_type}
+      meshmesh_use_starpath: ${meshmesh_use_starpath}
   switch: !include ../common/shelly1/switch.yaml
   binary_sensor: !include ../common/shelly1/binary_sensor.yaml
 
