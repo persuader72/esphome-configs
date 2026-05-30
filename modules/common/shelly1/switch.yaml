@@ -4,6 +4,7 @@ substitutions:
   switch_name: Switch
   switch_pin: GPIO4
   switch_is_internal: false
+  switch_restore_mode: ALWAYS_OFF
 
 switch:
   - platform: gpio
@@ -11,3 +12,4 @@ switch:
     name: ${switch_name}
     pin: ${switch_pin}
     internal: ${switch_is_internal}
+    restore_mode: ${switch_restore_mode}

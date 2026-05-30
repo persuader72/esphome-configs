@@ -3,6 +3,7 @@ substitutions:
   name: shelly-button-sn02
   friendly_name: Shelly Button SN02
   meshmesh_version: main
+  meshmesh_node_type: edge
 
 packages:
   common: !include modules/devices/shelly-1-light.yaml

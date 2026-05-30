@@ -1,17 +1,7 @@
 ---
-substitutions:
-  switch_name: Switch
-  switch_id: switch_1
-  switch_is_internal: false
-  binary_sensor_name: Button
-
 packages:
   common: !include ../common-esp8266.yaml
   meshmesh: !include ../common/meshmesh.yaml
-  switch: !include ../common/switches/shelly.yaml
+  switch: !include ../common/shelly1/switch.yaml
+  binary_sensor: !include ../common/shelly1/binary_sensor.yaml
 
-binary_sensor:
-  - platform: gpio
-    id: binary_sensor_1
-    name: ${binary_sensor_name}
-    pin: GPIO5                    

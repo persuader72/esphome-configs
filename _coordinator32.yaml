@@ -12,6 +12,7 @@ substitutions:
 
 packages:
   common: !include modules/devices/esp32evb.yaml
+  #common: !include modules/devices/lilygo-t-oi-plus.yaml
 
 ping:
   address: server

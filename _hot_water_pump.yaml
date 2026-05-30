@@ -1,0 +1,25 @@
+---
+substitutions:
+  name: hot-water-pump
+  friendly_name: Hot Water Pump
+  logger_level: DEBUG
+  binary_sensor_id: flow_sensor
+  binary_sensor_name: Flow Sensor
+  switch_id: pump_enable
+  switch_name: Pump Enable
+
+packages:
+  common: !include modules/devices/shelly-1.yaml
+
+binary_sensor:
+  - id: !extend ${binary_sensor_id}
+    filters:
+      - delayed_on: 100ms
+      - delayed_off: 100ms
+    on_press:
+      then:
+        - switch.turn_on: ${switch_id}
+    on_release:
+      then:
+        - switch.turn_off: ${switch_id}
+

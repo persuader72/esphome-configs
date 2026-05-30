@@ -11,15 +11,15 @@ packages:
   common: !include modules/devices/super-mini.yaml
 
 esphome:
-  on_shutdown:
-    - priority: 600
-      then:
-        - max17043.sleep_mode: max17043_id
+#  on_shutdown:
+#    - priority: 600
+#      then:
+#        - max17043.sleep_mode: max17043_id
 
 api:
-  on_client_connected:
-    - delay: 10s
-    - deep_sleep.enter: deep_sleep_1
+#  on_client_connected:
+#    - delay: 10s
+#    - deep_sleep.enter: deep_sleep_1
 
 i2c:
   sda: GPIO8
@@ -27,28 +27,28 @@ i2c:
   id: i2c_max17043
   scan: false
 
-deep_sleep:
-  id: deep_sleep_1
-  run_duration: 20s
-  sleep_duration: 5min
+#deep_sleep:
+#  id: deep_sleep_1
+#  run_duration: 20s
+#  sleep_duration: 5min
 
-switch:
-  - platform: template
-    id: deep_sleep_disable
-    name: "Disable deep_sleep"
-    restore_mode: ALWAYS_OFF
-    optimistic: true
-    turn_on_action:
-      - deep_sleep.prevent: deep_sleep_1
+#switch:
+#  - platform: template
+#    id: deep_sleep_disable
+#    name: "Disable deep_sleep"
+#    restore_mode: ALWAYS_OFF
+#    optimistic: true
+#    turn_on_action:
+#      - deep_sleep.prevent: deep_sleep_1
 #    turn_off_action:
 #      - deep_sleep.enter: deep_sleep_1
-  - platform: template
-    id: deep_sleep_enable
-    name: "Enable deep_sleep"
-    restore_mode: ALWAYS_OFF
-    optimistic: true
-    turn_on_action:
-      - deep_sleep.enter: deep_sleep_1
+#  - platform: template
+#    id: deep_sleep_enable
+#    name: "Enable deep_sleep"
+#    restore_mode: ALWAYS_OFF
+#    optimistic: true
+#    turn_on_action:
+#      - deep_sleep.enter: deep_sleep_1
 #    turn_off_action:
 #      - deep_sleep.enter: deep_sleep_1
 

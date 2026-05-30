@@ -3,6 +3,7 @@ substitutions:
   name: shelly-button-sn01
   friendly_name: Shelly Button SN01
   logger_level: INFO
+  meshmesh_node_type: edge
 
 packages:
   common: !include modules/devices/shelly-1.yaml

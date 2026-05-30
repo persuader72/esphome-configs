@@ -1,0 +1,14 @@
+---
+substitutions:
+  binary_sensor_id: binary_sensor_1
+  binary_sensor_name: Binary Sensor
+  binary_sensor_pin: GPIO5
+  binary_sensor_is_internal: false
+
+binary_sensor:
+  - platform: gpio
+    id: ${binary_sensor_id}
+    name: ${binary_sensor_name}
+    pin: ${binary_sensor_pin}
+    internal: ${binary_sensor_is_internal}
+

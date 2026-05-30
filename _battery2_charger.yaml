@@ -1,0 +1,9 @@
+---
+substitutions:
+  name: battery2-charger
+  friendly_name: Battery2 Charger
+  switch_name: Battery2 Charger
+  meshmesh_node_type: edge
+
+packages:
+  common: !include modules/devices/shelly-1-switch.yaml
