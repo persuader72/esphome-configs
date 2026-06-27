@@ -1,0 +1,36 @@
+---
+substitutions:
+  name: well-pump
+  friendly_name: Well Pump
+  logger_level: DEBUG
+  binary_sensor_id: pump_button
+  binary_sensor_name: Pump Button
+  switch_id: pump_enable
+  switch_name: Pump Enable
+  switch_restore_mode: ALWAYS_OFF
+
+packages:
+  common: !include modules/devices/shelly-1.yaml
+
+script:
+  - id: pump_auto_off
+    then:
+      - switch.turn_on: ${switch_id}
+      - delay: 30min
+      - switch.turn_off: ${switch_id}
+
+binary_sensor:
+  - id: !extend ${binary_sensor_id}
+    filters:
+      - delayed_on: 100ms
+      - delayed_off: 100ms
+    on_release:
+      then:
+        - if:
+            condition:
+              switch.is_on: ${switch_id}
+            then:
+              - script.stop: pump_auto_off
+              - switch.turn_off: ${switch_id}
+            else:
+              - script.execute: pump_auto_off

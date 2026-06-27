@@ -4,7 +4,8 @@ substitutions:
 
 packages:
   common: !include ../common-esp8266.yaml
-  meshmesh: !include ../common/meshmesh-local.yaml
+  meshmesh: !include
+    file: ../common/meshmesh.yaml
     vars:
       meshmesh_node_type: ${meshmesh_node_type}
       meshmesh_use_starpath: ${meshmesh_use_starpath}

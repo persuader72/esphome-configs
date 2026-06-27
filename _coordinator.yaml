@@ -9,6 +9,7 @@ substitutions:
   logger_level: INFO
   logger_baud_rate: 0
   meshmesh_channel: 6
+  meshmesh_socket_implem: esp8266
 
 packages:
   common: !include modules/devices/d1-mini.yaml
@@ -17,4 +18,5 @@ meshmesh:
   node_type: coordinator
 
 ping:
-  address: server
+  mesh_address:
+    address: server
