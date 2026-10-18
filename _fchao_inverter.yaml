@@ -1,0 +1,41 @@
+---
+substitutions:
+  name: fchao-interface
+  friendly_name: FCHAO Interface
+  meshmesh_channel: 6
+  meshmesh_node_type: backbone
+  logger_hardware_uart: USB_SERIAL_JTAG
+  logger_level: INFO
+
+packages:
+  common: !include modules/devices/super-mini.yaml
+
+external_components:
+  - source:
+      type: git
+      url: https://github.com/christian-dascoli00/ESPHome-FCHAO-inverter.git
+      ref: main
+    components: [fchao_inverter]
+
+uart:
+  tx_pin: GPIO21    # C3 SuperMini TX
+  rx_pin: GPIO20    # C3 SuperMini RX
+  baud_rate: 9600
+
+fchao_inverter:
+  - id: inverter1
+    update_interval: 1s
+    flow_control_pin: GPIO10
+
+sensor:
+  - platform: fchao_inverter
+    ac_voltage:
+      name: "Inverter AC Voltage"
+    power:
+      name: "Inverter Power"
+    dc_voltage:
+      name: "Inverter DC Voltage"
+    temperature:
+      name: "Inverter Temperature"
+
+

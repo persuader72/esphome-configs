@@ -1,0 +1,19 @@
+substitutions:
+  name: "garage-panel"
+  friendly_name: "Garage Panel"
+
+esphome:
+  platformio_options:
+    board_build.esp_idf.components: "libjpeg-turbo-esp32"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+
+packages:
+  setup:
+    url: https://github.com/lamiskin/espcontrol-community-devices/
+    file: devices/m5stack-esp32-p4-tab5-v1/packages.yaml
+    refresh: 1s
+

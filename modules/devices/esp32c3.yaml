@@ -4,7 +4,7 @@ substitutions:
   switch_restore_mode: RESTORE_DEFAULT_OFF
 
 packages:
-  common: !include ../common-esp32.yaml
+  common: !include ../common-esp32c3.yaml
   meshmesh: !include ../common/meshmesh.yaml
 
 switch:
